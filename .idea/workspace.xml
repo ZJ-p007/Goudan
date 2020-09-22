@@ -4,6 +4,7 @@
     <list default="true" id="c482aec3-3ceb-4b0a-bb4d-2c01856e41a5" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/.idea/HelloBeego0604.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/HelloBeego0604.exe" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/conf/app.conf" afterDir="false" />
