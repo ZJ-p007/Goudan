@@ -1,17 +1,16 @@
 package main
 
 import (
+	"HelloBeego0604/dbmysql"
 	_ "HelloBeego0604/routers"
-	"database/sql"
-	"fmt"
 	"github.com/astaxie/beego"
+	//mysql驱动
+	_"github.com/go-sql-driver/mysql"
 )
 
 func main() {
-    //定义conifg变量，接收并赋值全局配置变量
-    config :=beego.AppConfig
     //获取配置选项
-    appName :=config.String("appname")
+   /** appName :=config.String("appname")
 	fmt.Println("项目应用名称:",appName)
     port,err := config.Int("httpport")
     if err != nil{
@@ -19,19 +18,18 @@ func main() {
     	panic("项目配置信息解析错误，请查验后重试")
 	}
     fmt.Println("应用的监听端口:",port)
+    */
+	//定义conifg变量，接收并赋值全局配置变量
 
-    driver := config.String("db_driver")
-    dbUser := config.String("db_user ")
-    dbPassword := config.String("db_password")
-    dbIP := config.String("db_ip")
-    dbName := config.String("db_name")
+	//1.连接数据库
+	dbmysql.Connect()
 
-    db,err :=sql.Open(driver,dbUser+":"+dbPassword+"@tcp("+dbIP+")/"+dbName+"?charset=utf8")
-    if err != nil{
-    	panic("数据库打开失败，请重试")
-	}
-    fmt.Println(db)
 
+
+    //其他配置
+
+    //启动程序
     beego.Run()
 }
+
 

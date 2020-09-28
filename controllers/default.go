@@ -10,7 +10,7 @@ import (
 )
 
 type MainController struct {
-	beego.Controller
+	beego.Controller//匿名字段
 }
 
 func (c *MainController) Get() {
@@ -23,7 +23,7 @@ func (c *MainController) Get() {
 	sex := c.Ctx.Input.Query("sex")
 	fmt.Println(name,age,sex)
 	//以admin,18为正确数据进行验证
-	if name != "admin" || age !="18"{
+	if name != "admcin" || age !="18"{
 		c.Ctx.ResponseWriter.Write([]byte("数据验证错误"))
 		return
 	}
@@ -38,7 +38,7 @@ func (c *MainController) Get() {
 
 //该post方法是处理post类型的请求的时候要调用的方法
 func (c *MainController) Post() {
-	fmt.Println("post类型请求")
+	/**fmt.Println("post类型请求")
 	user :=c.Ctx.Request.FormValue("user")
 	fmt.Println("用户名为:",user)
 	psd :=c.Ctx.Request.FormValue("psd")
@@ -55,13 +55,17 @@ func (c *MainController) Post() {
 	 */
 
 	//body := c.Ctx.Request.Body
-	dataBytes,err := ioutil.ReadAll(c.Ctx.Request.Body)
-    if err != nil{
-    	c.Ctx.WriteString("数据接收失败，请重试")
-		return
-	}
+
+
+
+
 	//json包解析
 	var person models.Person
+	dataBytes,err := ioutil.ReadAll(c.Ctx.Request.Body)
+	if err != nil{
+		c.Ctx.WriteString("数据接收失败，请重试")
+		return
+	}
 	err = json.Unmarshal(dataBytes,&person)
     if err != nil{
     	c.Ctx.WriteString("数据解析失败，请重试")
