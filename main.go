@@ -24,12 +24,11 @@ func main() {
 	//1.连接数据库
 	dbmysql.Connect()
 
-
-
     //其他配置
 
     //启动程序
     beego.Run()
+
 }
 
 

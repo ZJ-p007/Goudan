@@ -11,8 +11,4 @@ func init() {
 
     //用户注册功能接口
     beego.Router("/register",&controllers.RegisterController{})
-
-
-
-
 }
