@@ -23,7 +23,7 @@ func Connect() {
 	fmt.Println(dbName, dbPassword, dbUser, dbIP, driver)
 
 	//连接数据库
-	connUrl := dbUser + ":" + dbPassword + "@tcp(" + dbIP + ")/" + dbName + "?charset=utf8"
+	connUrl := dbUser +":"+dbPassword+"@tcp("+dbIP+")/"+dbName+"?charset = utf8"
 	//db,err :=sql.Open(driver,dbUser+":"+dbPassword+"@tcp("+dbIP+")/"+dbName+"?charset=utf8")
 	db, err := sql.Open(driver, connUrl)
 	if err != nil { //err不为nil，表示连接数据库时出现错误
@@ -45,6 +45,7 @@ func AddUser(u models.User) (int64, error) {
 	result, err := Db.Exec("insert into user(name,birthday,address,password)"+
 		" values(?,?,?,?) ", u.Name, u.Birthday, u.Address, u.Password)
 	if err != nil {
+		fmt.Println(err.Error())
 		return -1, err
 	}
 	row, err := result.RowsAffected()
